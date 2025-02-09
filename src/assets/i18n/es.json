@@ -1,5 +1,12 @@
 {
   "label": {
-    "hello": "hola"
+    "list-playlist": "Listas de reproducción",
+    "no-records": "Sin registros",
+    "name": "Nombre",
+    "description": "Descripción",
+    "actions": "Acciones"
+  },
+  "button": {
+    "detail": "Ver detalle"
   }
 }

@@ -5,6 +5,7 @@ import { ManagePlaylistRoutingModule } from './manage-playlist-routing.module';
 import { PageManagePlaylistComponent } from './pages/page-manage-playlist/page-manage-playlist.component';
 import { TablePlaylistComponent } from './components/table-playlist/table-playlist.component';
 import { PrimeNgModule } from 'src/app/shared/modules/primeng/primeng.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { PrimeNgModule } from 'src/app/shared/modules/primeng/primeng.module';
   imports: [
     CommonModule,
     ManagePlaylistRoutingModule,
-    PrimeNgModule
+    PrimeNgModule,
+    TranslateModule,
   ]
 })
 export class ManagePlaylistModule { }

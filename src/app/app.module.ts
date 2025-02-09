@@ -5,9 +5,10 @@ import { AppComponent } from './app.component';
 
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthInterceptor } from './core/interceptor/auth-interceptor';
 
 @NgModule({
     declarations: [
@@ -26,7 +27,7 @@ import { AppRoutingModule } from './app-routing.module';
         defaultLanguage: 'es'
       }),
     ],
-    providers: [provideHttpClient(withInterceptorsFromDi())],
+    providers: [provideHttpClient(withInterceptorsFromDi()),  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

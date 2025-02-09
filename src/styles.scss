@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+.p-button {
+    font-size: 12px !important; 
+    padding: 6px 12px !important;
+    height: 30px !important;
+}
+
+.p-inputtext {
+    font-size: 12px;
+    padding: 6px; 
+    height: 30px; 
+}
+
+.p-table {
+    font-size: 12px; 
+}
+
+.p-table th, .p-table td {
+    padding: 4px 8px; 
+}
+
+.p-menu {
+    font-size: 12px;
+}
+
+.p-dropdown {
+    font-size: 12px;
+    padding: 6px;
+}
+
+.p-tooltip {
+    font-size: 12px;
+}

@@ -2,6 +2,21 @@
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 @import "primeflex/primeflex.css";
+@import "primeicons/primeicons.css";
+
+.required:after {
+    content: "*";
+    color: red;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.danger {
+    border: 1px solid red !important;
+    color: red !important;
+}
 
 .p-button {
     font-size: 12px !important; 
@@ -23,24 +38,11 @@
     padding: 4px 8px; 
 }
 
-.p-menu {
-    font-size: 12px;
-}
 
-.p-dropdown {
-    font-size: 12px;
-    padding: 6px;
-}
-
-.p-tooltip {
-    font-size: 12px;
-}
 
 .no-records {
     background-color: rgba(185, 185, 185, 0.336);
     font-size: 20px;
     display: block;
     padding: .7rem;
-    // border: 1px;
-    // border-radius: 50% ;
 }

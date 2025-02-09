@@ -33,6 +33,10 @@
   "messages": {
     "no-songs": "¡No hay canciones en esta playlist!",
     "no-records": "Sin registros",
+    "playlist-created": "Lista de reproducción creada con exito",
+    "playlist-deleted": "Lista de reproducción eliminada con exito",
+    "account-created": "Cuenta creada con exito",
+    "error-unexpected": "Ocurrio un error inesperado",
     "confirmation": {
       "CONFIR001": "Esta seguro que desea eliminar la playlist?"
     },

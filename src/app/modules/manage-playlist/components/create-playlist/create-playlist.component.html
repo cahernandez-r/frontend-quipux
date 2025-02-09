@@ -81,6 +81,8 @@
         <div class="flex justify-content-end gap-2">
             <button 
                 pButton 
+                class="p-button-outlined"
+                icon="pi pi-arrow-left"
                 label="{{'button.back' | translate}}"
                 (click)="onBack()"
             >
@@ -88,6 +90,7 @@
             <button 
                 [disabled]="formPlaylist.invalid || selectedSongs.length === 0"
                 pButton 
+                icon="pi pi-check"
                 label="{{'button.create' | translate}}"
                 (click)="onCreatePlaylist()"
             >

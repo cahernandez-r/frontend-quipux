@@ -4,6 +4,7 @@ import { ManagePlaylistService } from '../../services/manage-playlist.service';
 import { Router } from '@angular/router';
 import { ConfirmationService } from 'primeng/api';
 import { TranslateService } from '@ngx-translate/core';
+import { UtilService } from 'src/app/shared/services/util.service';
 
 @Component({
   selector: 'app-table-playlist',
@@ -20,6 +21,7 @@ export class TablePlaylistComponent {
     private router: Router,
     private confirmationService: ConfirmationService,
     private translate: TranslateService,
+    private utilService: UtilService,
   ) {}
 
   fetchAllPlaylist():void {
@@ -28,7 +30,7 @@ export class TablePlaylistComponent {
         this.playlists = response.playlists;
       },
       error: (e) => {
-        //TODO: CREATE AN INTERCEPTOR
+        this.utilService.showMessage("messages.error-unexpected", "error");
       }
     });
   }
@@ -39,7 +41,7 @@ export class TablePlaylistComponent {
 
   onDeletePlaylist(playlistName: string):void {
     this.confirmationService.confirm({
-      message: `${this.translate.instant('messages.confirmation.CONFIR001')}: ${playlistName}`,
+      message: this.translate.instant('messages.confirmation.CONFIR001'),
       accept: () => {
           this.callDeletePlaylist(playlistName);
       },
@@ -50,6 +52,10 @@ export class TablePlaylistComponent {
     this.managePlaylistService.deletePlaylist(playlistName).subscribe({
       next: () => {
         this.fetchAllPlaylist();
+        this.utilService.showMessage("messages.playlist-deleted", "success");
+      },
+      error: (e) => {
+        this.utilService.showMessage("messages.error-unexpected", "error");
       }
     });
   }

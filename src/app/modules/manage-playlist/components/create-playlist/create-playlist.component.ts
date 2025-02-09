@@ -38,7 +38,7 @@ export class CreatePlaylistComponent {
     this.managePlaylistService.validatePlaylistName(listName).subscribe({
       next:(response: ResponseValidateExistPlayListName) => {
         if (response.existsPlayList) {
-          this.utilService.showMessage("messages.error.ERR001", "error")
+          this.utilService.showMessage("messages.error.ERR001", "error");
           this.controlName.setValue("");
         }
       }
@@ -60,11 +60,15 @@ export class CreatePlaylistComponent {
     }
     this.managePlaylistService.createPlaylist(request).subscribe({
       next: (response: ResponseFetchDetail) => {
-        if(response){
+        if(response) {
+          this.utilService.showMessage("messages.playlist-created", "success");
           this.onBack();
         }
+      }, 
+      error: (e) => {
+        this.utilService.showMessage("messages.error-unexpected", "error");
       }
-    })
+    });
   }
 
   onBack():void {

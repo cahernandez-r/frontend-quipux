@@ -14,6 +14,8 @@
             <div class="flex align-items-center justify-content-end">
                 <button 
                     pButton 
+                    class="p-button-outlined"
+                    icon="pi pi-plus"
                     label="{{ 'label.add-playlist' | translate }}"
                     (click)="onCreatePlaylist()"
                 >
@@ -40,19 +42,18 @@
                         <button 
                             pButton 
                             label="{{'button.detail' | translate}}"
-                            icon="pi pi-check"
+                            icon="pi pi-eye"
                             (click)="onViewDetailPlaylist(playlist.name)"
                         >
                         </button>
                         <button 
                             pButton 
                             label="{{'button.delete' | translate}}"
-                            icon="pi pi-check"
-                            severity="danger"
-                            style="background-color: rgb(136, 37, 37) !important;"
-                            stl
+                            icon="pi pi-trash"
+                            class="p-button-outlined danger"
                             (click)="onDeletePlaylist(playlist.name)"
                         >
+                            <!-- style="background-color: rgb(136, 37, 37) !important;" -->
                         </button>
                     </div>
                 </td>

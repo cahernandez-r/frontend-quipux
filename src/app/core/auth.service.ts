@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { LoginRequest, LoginResponse, RegisterRequest } from '../shared/models/auth-models';
 import { backendUrl } from './constants/api-url';
+import { UtilService } from '../shared/services/util.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,19 +13,21 @@ export class AuthService {
 
   private PATH_ROOT = 'auth';  
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private utilService: UtilService) {}
 
   login(request: LoginRequest): Observable<LoginResponse | null> {
+    this.logout();
     return this.http.post<LoginResponse>(`${backendUrl(this.PATH_ROOT)}/login`, { ...request})
       .pipe(
         catchError((error) => {
-          console.error('Error de autenticación:', error);
+          this.utilService.showMessage("Usuario o Contraseña invalidos", "error");
           return of(null);
         })
       );
   }
 
   register(request: RegisterRequest): Observable<LoginResponse | null> {
+    this.logout();
     return this.http.post<LoginResponse>(`${backendUrl(this.PATH_ROOT)}/register`, { ...request});
   }
 

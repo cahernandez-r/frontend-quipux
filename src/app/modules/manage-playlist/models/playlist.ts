@@ -2,6 +2,9 @@ import { Song } from "src/app/shared/models/song";
 
 export type ResponseFetchAllPlayList = {
     playlists: Playlist[];
+    pageSize: number;
+    pageNumber: number;
+    totalElement: number;
 }
 
 export type Playlist = {

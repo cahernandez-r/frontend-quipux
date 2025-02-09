@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RequestCreatePlaylist, ResponseFetchAllPlayList, ResponseFetchDetail, ResponseValidateExistPlayListName } from '../models/playlist';
@@ -15,8 +15,11 @@ export class ManagePlaylistService {
     
   }
 
-  fetchAllPlayList():Observable<ResponseFetchAllPlayList> {
-    return this.http.get<ResponseFetchAllPlayList>(backendUrl(this.PATH_ROOT));
+  fetchAllPlayList(pageNumber: number, pageSize: number):Observable<ResponseFetchAllPlayList> {
+    let params = new HttpParams()
+      .set('pageNumber', pageNumber) 
+      .set('pageSize', pageSize); 
+    return this.http.get<ResponseFetchAllPlayList>(backendUrl(this.PATH_ROOT), { params });
   }
 
   fetchDetailPlayList(playlistName: string):Observable<ResponseFetchDetail> {

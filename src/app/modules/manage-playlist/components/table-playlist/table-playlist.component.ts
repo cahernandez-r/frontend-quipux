@@ -15,6 +15,7 @@ export class TablePlaylistComponent {
 
   playlists: Playlist[] = []
   showModalDetail: boolean = false;
+  totalElement: number = 0;
 
   constructor(
     private readonly managePlaylistService:ManagePlaylistService,
@@ -24,12 +25,20 @@ export class TablePlaylistComponent {
     private utilService: UtilService,
   ) {}
 
-  fetchAllPlaylist():void {
-    this.managePlaylistService.fetchAllPlayList().subscribe({
+  eventFetchKnowledgeBases($event: any):void {
+    const page:number = $event?.first / $event.rows;
+    const size: number = $event.rows;
+    this.fetchAllPlaylist(page, size);
+  }
+
+  fetchAllPlaylist(page:number, size:number):void {
+    this.managePlaylistService.fetchAllPlayList(page, size).subscribe({
       next: (response: ResponseFetchAllPlayList) => {
         this.playlists = response.playlists;
+        this.totalElement = response.totalElement;
       },
       error: (e) => {
+        console.log(e)
         this.utilService.showMessage("messages.error-unexpected", "error");
       }
     });
@@ -51,7 +60,7 @@ export class TablePlaylistComponent {
   callDeletePlaylist(playlistName: string):void {
     this.managePlaylistService.deletePlaylist(playlistName).subscribe({
       next: () => {
-        this.fetchAllPlaylist();
+        this.fetchAllPlaylist(0, 5);
         this.utilService.showMessage("messages.playlist-deleted", "success");
       },
       error: (e) => {

@@ -4,8 +4,7 @@ Asegúrate de tener los siguientes programas instalados en tu máquina:
 ### Docker
 
 Si no tienes Docker, puedes instalarlo siguiendo las instrucciones oficiales en docker.com.
-Git
-
+### Git
 Si aún no tienes Git instalado, puedes obtenerlo desde git-scm.com.
 Pasos para ejecutar la aplicación con Docker
 

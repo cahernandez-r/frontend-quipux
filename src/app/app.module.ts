@@ -10,7 +10,8 @@ import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthInterceptor } from './core/interceptor/auth-interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Asegúrate de importar esto
-
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 @NgModule({
     declarations: [
         AppComponent
@@ -20,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
       BrowserModule,
       AppRoutingModule,
       BrowserAnimationsModule,
+      ToastModule,
       TranslateModule.forRoot({
         loader: {
             provide: TranslateLoader,
@@ -29,7 +31,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
         defaultLanguage: 'es'
       }),
     ],
-    providers: [provideHttpClient(withInterceptorsFromDi()),  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
+    providers: [provideHttpClient(withInterceptorsFromDi()),  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, MessageService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

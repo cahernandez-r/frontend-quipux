@@ -1,3 +1,5 @@
+import { Song } from "src/app/shared/models/song";
+
 export type ResponseFetchAllPlayList = {
     playlists: Playlist[];
 }
@@ -11,10 +13,12 @@ export type ResponseFetchDetail = {
     songs: Song[];
 } & Playlist;
 
-export type Song = {
-    title: string;
-    artist: string;
-    album: string;
-    year: string;
-    genre: string;
+export type ResponseValidateExistPlayListName = {
+    existsPlayList: boolean;
+}
+
+export type RequestCreatePlaylist = {
+    name: string;
+    description: string;
+    idSongs: number[];
 }

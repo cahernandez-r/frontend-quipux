@@ -53,6 +53,10 @@ export class TablePlaylistComponent {
         console.log("eliminada_exito");
         this.fetchAllPlaylist();
       }
-    })
+    });
+  }
+
+  onCreatePlaylist():void {
+    this.router.navigate(["list","create"]);
   }
 }

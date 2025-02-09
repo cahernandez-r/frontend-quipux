@@ -1,5 +1,5 @@
 <p-toast />
-<p-card header="{{'label.list-playlist' | translate}}">
+<p-panel header="{{'label.list-playlist' | translate}}">
     
     <p-table
         [value]="playlists"
@@ -10,6 +10,16 @@
         (onLazyLoad)="fetchAllPlaylist()"
         
     >
+        <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-end">
+                <button 
+                    pButton 
+                    label="{{ 'label.add-playlist' | translate }}"
+                    (click)="onCreatePlaylist()"
+                >
+                </button>
+            </div>
+        </ng-template>
         <ng-template pTemplate="header">
             <tr>
                 <th class="text-center" style="width: 30%;">{{'label.name' | translate}}</th>
@@ -60,7 +70,7 @@
             </tr>
         </ng-template>
     </p-table>
-</p-card>
+</p-panel>
 <p-confirmDialog
     #cd
     header="{{'label.confirmation' | translate}}"

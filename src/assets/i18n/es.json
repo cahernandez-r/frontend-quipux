@@ -1,7 +1,6 @@
 {
   "label": {
     "list-playlist": "Listas de reproducción",
-    "no-records": "Sin registros",
     "name": "Nombre",
     "description": "Descripción",
     "actions": "Acciones",
@@ -10,12 +9,28 @@
     "artist": "Artista",
     "genre": "Género",
     "year": "Año",
-    "album": "Álbum"
+    "album": "Álbum",
+    "no": "No",
+    "yes": "Si",
+    "confirmation": "Confirmación",
+    "add-playlist": "Crear lista",
+    "songs": "Canciones"
   },
   "button": {
-    "detail": "Ver detalle"
+    "detail": "Ver detalle",
+    "back": "Regresar",
+    "delete": "Eliminar",
+    "create": "Crear"
   },
   "messages": {
-    "no-songs": "¡No hay canciones en esta playlist!"
+    "no-songs": "¡No hay canciones en esta playlist!",
+    "no-records": "Sin registros",
+    "confirmation": {
+      "CONFIR001": "Esta seguro que desea eliminar la playlist?"
+    },
+    "error": {
+      "required-field": "Este campo es obligatorio",
+      "ERR001": "Ya existe una lista con ese nombre"
+    }
   }
 }

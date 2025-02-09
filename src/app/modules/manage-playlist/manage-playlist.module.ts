@@ -9,12 +9,14 @@ import { TranslateModule } from '@ngx-translate/core';
 import { DialogService } from 'primeng/dynamicdialog';
 import { DetailPlaylistComponent } from './components/detail-playlist/detail-playlist.component';
 import { MessageService } from 'primeng/api';
+import { CreatePlaylistComponent } from './components/create-playlist/create-playlist.component';
 
 @NgModule({
   declarations: [
     PageManagePlaylistComponent,
     TablePlaylistComponent,
-    DetailPlaylistComponent
+    DetailPlaylistComponent,
+    CreatePlaylistComponent
   ],
   imports: [
     CommonModule,

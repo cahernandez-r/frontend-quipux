@@ -33,6 +33,8 @@ export class CreatePlaylistComponent {
 
   onChangeName():void {
     const listName: string = this.controlName.value;
+    if (listName.length === 0)return;
+    
     this.managePlaylistService.validatePlaylistName(listName).subscribe({
       next:(response: ResponseValidateExistPlayListName) => {
         if (response.existsPlayList) {

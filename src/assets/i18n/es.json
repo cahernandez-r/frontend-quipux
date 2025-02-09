@@ -14,13 +14,21 @@
     "yes": "Si",
     "confirmation": "Confirmación",
     "add-playlist": "Crear lista",
-    "songs": "Canciones"
+    "songs": "Canciones",
+    "login":"Inicio de sesión",
+    "user-name": "Email",
+    "password": "Contraseña",
+    "register": "Crear cuenta de usuario"
+    
   },
   "button": {
     "detail": "Ver detalle",
     "back": "Regresar",
     "delete": "Eliminar",
-    "create": "Crear"
+    "create": "Crear",
+    "login": "Iniciar sesión",
+    "register": "Crear cuenta",
+    "logout": "Cerrar sesión"
   },
   "messages": {
     "no-songs": "¡No hay canciones en esta playlist!",

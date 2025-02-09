@@ -1,20 +1,29 @@
 import { Injectable } from '@angular/core';
-import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse } from '@angular/common/http';
+import { catchError, Observable, of, throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  // Método para obtener el token de autenticación
+  constructor(private router: Router) {}
+
   private getAuthToken(): string | null {
-    return"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjYW1pbG8uaGVybm5hZGV6IiwiZXhwIjoxNzM5MDcwMzE1fQ.wTCxL2R6Wvj9kL1lOSmvurk9Fz2TRJBn6cIxFM5mGtJNEVaYCrA6egA3Xr3AlAvoSbWprcQ-Ukh63K-dps297w"
-    // return localStorage.getItem('authToken');  
+    const token: string | null = localStorage.getItem('authToken');   
+    if (!token) {
+      this.router.navigate(['auth', 'login']);
+      
+    }
+    return token;
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = this.getAuthToken();
 
-    // Si hay un token, agregamos el encabezado Authorization
+    if (!token) {
+      return next.handle(req);
+    }
+
     if (token) {
       req = req.clone({
         setHeaders: {
@@ -23,6 +32,6 @@ export class AuthInterceptor implements HttpInterceptor {
       });
     }
 
-    return next.handle(req); // Pasamos la solicitud modificada
+    return next.handle(req);
   }
 }

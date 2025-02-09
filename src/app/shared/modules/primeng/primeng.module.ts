@@ -58,7 +58,7 @@ import { ConfirmationService } from 'primeng/api';
     ProgressBarModule,
     RadioButtonModule,
     TableModule,
-  ],
+    ],
   providers:[
     ConfirmationService,
   ]

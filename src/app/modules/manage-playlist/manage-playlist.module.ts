@@ -6,17 +6,23 @@ import { PageManagePlaylistComponent } from './pages/page-manage-playlist/page-m
 import { TablePlaylistComponent } from './components/table-playlist/table-playlist.component';
 import { PrimeNgModule } from 'src/app/shared/modules/primeng/primeng.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { DialogService } from 'primeng/dynamicdialog';
+import { DetailPlaylistComponent } from './components/detail-playlist/detail-playlist.component';
 
 @NgModule({
   declarations: [
     PageManagePlaylistComponent,
-    TablePlaylistComponent
+    TablePlaylistComponent,
+    DetailPlaylistComponent
   ],
   imports: [
     CommonModule,
     ManagePlaylistRoutingModule,
     PrimeNgModule,
     TranslateModule,
+  ],
+  providers: [
+    DialogService,
   ]
 })
 export class ManagePlaylistModule { }

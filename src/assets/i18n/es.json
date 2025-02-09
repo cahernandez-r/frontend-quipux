@@ -4,9 +4,18 @@
     "no-records": "Sin registros",
     "name": "Nombre",
     "description": "Descripción",
-    "actions": "Acciones"
+    "actions": "Acciones",
+    "detail-playlist":  "Detalle de la lista de reproducción",
+    "title": "Título",
+    "artist": "Artista",
+    "genre": "Género",
+    "year": "Año",
+    "album": "Álbum"
   },
   "button": {
     "detail": "Ver detalle"
+  },
+  "messages": {
+    "no-songs": "¡No hay canciones en esta playlist!"
   }
 }

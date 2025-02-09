@@ -29,6 +29,7 @@
                         pButton 
                         label="{{'button.detail' | translate}}"
                         icon="pi pi-check"
+                        (click)="onViewDetailPlaylist(playlist.name)"
                     >
                     </button>
                 </td>
@@ -45,5 +46,5 @@
                 </td>
             </tr>
         </ng-template>
-  </p-table>
+    </p-table>
 </p-card>

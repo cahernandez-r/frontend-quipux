@@ -25,7 +25,6 @@ export class TablePlaylistComponent {
   fetchAllPlaylist():void {
     this.managePlaylistService.fetchAllPlayList().subscribe({
       next: (response: ResponseFetchAllPlayList) => {
-        console.log(response.playlists)
         this.playlists = response.playlists;
       },
       error: (e) => {
@@ -50,7 +49,6 @@ export class TablePlaylistComponent {
   callDeletePlaylist(playlistName: string):void {
     this.managePlaylistService.deletePlaylist(playlistName).subscribe({
       next: () => {
-        console.log("eliminada_exito");
         this.fetchAllPlaylist();
       }
     });

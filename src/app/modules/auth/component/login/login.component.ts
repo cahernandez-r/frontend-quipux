@@ -27,7 +27,6 @@ export class LoginComponent {
     const request: LoginRequest = {...this.formLogin.value}
     this.authService.login(request).subscribe({
       next:(response: LoginResponse | null) => {
-        console.log(response)
         if (response) {
           this.authService.saveToken(response.token);
           this.router.navigate(['']);

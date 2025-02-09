@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { SongService } from 'src/app/shared/services/song.service';
 import { ResponseFetchAllSongs, Song } from 'src/app/shared/models/song';
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   templateUrl: './create-playlist.component.html',
   styleUrls: ['./create-playlist.component.scss']
 })
-export class CreatePlaylistComponent {
+export class CreatePlaylistComponent implements OnInit {
 
   formPlaylist: FormGroup;
   songs: Song [] = [];
@@ -29,6 +29,10 @@ export class CreatePlaylistComponent {
       name: ["", Validators.required],
       description: ["", Validators.required],
     });
+  }
+
+  ngOnInit(): void {
+    this.fetchSongs();
   }
 
   onChangeName():void {

@@ -32,8 +32,7 @@
         responsiveLayout="scroll"
         [rowsPerPageOptions]="[5,10,15]"
         [paginator]="true"
-        [lazy]="true"
-        (onLazyLoad)="fetchSongs()"
+        [lazy]="false"
     >   
         <ng-template pTemplate="header">
             <tr>

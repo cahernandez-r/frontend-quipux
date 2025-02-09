@@ -22,4 +22,8 @@ export class ManagePlaylistService {
   fetchDetailPlayList(playlistName: string):Observable<ResponseFetchDetail> {
     return this.http.get<ResponseFetchDetail>(backendUrl(`${this.PATH_ROOT}/${playlistName}`));
   }
+
+  deletePlaylist(playlistName: string):Observable<void> {
+    return this.http.delete<void>(backendUrl(`${this.PATH_ROOT}/${playlistName}`));
+  }
 }

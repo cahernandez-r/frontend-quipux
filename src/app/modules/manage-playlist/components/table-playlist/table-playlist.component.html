@@ -1,3 +1,4 @@
+<p-toast />
 <p-card header="{{'label.list-playlist' | translate}}">
     
     <p-table
@@ -11,9 +12,9 @@
     >
         <ng-template pTemplate="header">
             <tr>
-                <th class="text-center">{{'label.name' | translate}}</th>
-                <th class="text-center">{{'label.description' | translate}}</th>
-                <th class="text-center">{{'label.actions' | translate}}</th>
+                <th class="text-center" style="width: 30%;">{{'label.name' | translate}}</th>
+                <th class="text-center" style="width: 40%;">{{'label.description' | translate}}</th>
+                <th class="text-center" style="width: 30%;">{{'label.actions' | translate}}</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-playlist>
@@ -25,13 +26,25 @@
                     {{ playlist.description }}
                 </td>
                 <td class="col-1 text-center">
-                    <button 
-                        pButton 
-                        label="{{'button.detail' | translate}}"
-                        icon="pi pi-check"
-                        (click)="onViewDetailPlaylist(playlist.name)"
-                    >
-                    </button>
+                    <div class="flex gap-2 justify-content-center">
+                        <button 
+                            pButton 
+                            label="{{'button.detail' | translate}}"
+                            icon="pi pi-check"
+                            (click)="onViewDetailPlaylist(playlist.name)"
+                        >
+                        </button>
+                        <button 
+                            pButton 
+                            label="{{'button.delete' | translate}}"
+                            icon="pi pi-check"
+                            severity="danger"
+                            style="background-color: rgb(136, 37, 37) !important;"
+                            stl
+                            (click)="onDeletePlaylist(playlist.name)"
+                        >
+                        </button>
+                    </div>
                 </td>
             </tr>
         </ng-template>
@@ -40,7 +53,7 @@
                 <td colspan="8">
                 <div class="p-3 surface-200 w-full text-center">
                     <b>
-                    {{'message.no-records' | translate}}
+                    {{'messages.no-records' | translate}}
                     </b>
                 </div>
                 </td>
@@ -48,3 +61,26 @@
         </ng-template>
     </p-table>
 </p-card>
+<p-confirmDialog
+    #cd
+    header="{{'label.confirmation' | translate}}"
+    icon="pi pi-exclamation-triangle"
+    [closable]="false"
+  >
+    <ng-template pTemplate="footer">
+        <button
+            type="button"
+            class="p-button p-button-outlined p-button-secondary"
+            pButton icon="pi pi-times"
+            label="{{'label.no' | translate}}"
+            (click)="cd.reject()">
+        </button>
+        <button
+            type="button"
+            pButton
+            icon="pi pi-check"
+            label="{{'label.yes' | translate }}"
+            (click)="cd.accept()">
+        </button>
+    </ng-template>
+</p-confirmDialog>

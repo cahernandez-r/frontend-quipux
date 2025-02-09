@@ -8,6 +8,7 @@ import { PrimeNgModule } from 'src/app/shared/modules/primeng/primeng.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { DialogService } from 'primeng/dynamicdialog';
 import { DetailPlaylistComponent } from './components/detail-playlist/detail-playlist.component';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { DetailPlaylistComponent } from './components/detail-playlist/detail-pla
   ],
   providers: [
     DialogService,
+    MessageService,
   ]
 })
 export class ManagePlaylistModule { }

@@ -9,6 +9,7 @@ import { HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withInterceptorsFromD
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthInterceptor } from './core/interceptor/auth-interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Asegúrate de importar esto
 
 @NgModule({
     declarations: [
@@ -18,6 +19,7 @@ import { AuthInterceptor } from './core/interceptor/auth-interceptor';
       CommonModule,
       BrowserModule,
       AppRoutingModule,
+      BrowserAnimationsModule,
       TranslateModule.forRoot({
         loader: {
             provide: TranslateLoader,

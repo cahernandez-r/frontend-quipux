@@ -26,6 +26,7 @@ import { RadioButtonModule } from "primeng/radiobutton";
 import { TableModule } from "primeng/table";
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ToastModule } from 'primeng/toast';
 
 import { ConfirmationService } from 'primeng/api';
 
@@ -58,6 +59,7 @@ import { ConfirmationService } from 'primeng/api';
     ProgressBarModule,
     RadioButtonModule,
     TableModule,
+    ToastModule
     ],
   providers:[
     ConfirmationService,

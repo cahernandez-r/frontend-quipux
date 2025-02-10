@@ -37,12 +37,15 @@
     "playlist-deleted": "Lista de reproducción eliminada con exito",
     "account-created": "Cuenta creada con exito",
     "error-unexpected": "Ocurrio un error inesperado",
+    "email-error": "El correo electrónico ingresado no es válido. Verifica que tenga el formato correcto.",
     "confirmation": {
       "CONFIR001": "Esta seguro que desea eliminar la playlist?"
     },
     "error": {
       "required-field": "Este campo es obligatorio",
-      "ERR001": "Ya existe una lista con ese nombre"
+      "ERR001": "Ya existe una lista con ese nombre",
+      "ERR002": "Ya existe un usuario registrado con el email ingresado",
+      "ERR003": "No existe un usuario registrado con el email ingresado"
     }
   }
 }

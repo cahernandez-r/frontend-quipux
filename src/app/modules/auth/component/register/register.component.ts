@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth.service';
+import { emailRegex } from 'src/app/core/constants/constants';
+import { CODES_ERROR } from 'src/app/core/enums/enums';
 import { LoginResponse, RegisterRequest } from 'src/app/shared/models/auth-models';
 import { UtilService } from 'src/app/shared/services/util.service';
 
@@ -20,7 +22,7 @@ export class RegisterComponent {
     private utilService: UtilService,
   ) {
     this.formRegister = this.fb.group({
-      email: ["", Validators.required, Validators.email],
+      email: ["", [Validators.required, Validators.pattern(emailRegex)]],
       password: ["", Validators.required],
     });
   }
@@ -35,9 +37,17 @@ export class RegisterComponent {
         }
       },
       error: (e) => {
+        if (CODES_ERROR.CODE_ERROR_USER_ALREADY_EXIST === e.error) {
+          this.utilService.showMessage("messages.error.ERR002", "error");
+          return;  
+        }
         this.utilService.showMessage("messages.error-unexpected", "error");
       }
     });
+  }
+
+  onBack():void {
+    this.router.navigate(["auth", "login"]);
   }
 
   get controlEmail():FormControl {

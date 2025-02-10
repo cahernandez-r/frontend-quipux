@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private activeRoute: ActivatedRoute) {}
 
   private getAuthToken(): string | null {
-    const token: string | null = localStorage.getItem('authToken');   
-    if (!token) {
+    const token: string | null = localStorage.getItem('authToken');
+    const urlSegments = this.router.url.split('/');
+    const lastPartUrl = urlSegments[urlSegments.length - 1];
+    if (!token && lastPartUrl !== "register") {
       this.router.navigate(['auth', 'login']);
       
     }

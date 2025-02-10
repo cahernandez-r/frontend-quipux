@@ -10,6 +10,11 @@
                     <input pInputText formControlName="email"/>
                     <small
                         class="p-error block fade-in"
+                        *ngIf="controlEmail.hasError('pattern') && (controlEmail.dirty)">
+                        {{ 'messages.email-error' | translate}}
+                    </small>
+                    <small
+                        class="p-error block fade-in"
                         *ngIf="controlEmail.invalid && (controlEmail.touched)">
                         {{ 'messages.error.required-field' | translate}}
                     </small>
@@ -26,10 +31,19 @@
                     </small>
                 </div>
             </form>
-            <div class="flex justify-content-center">
+            <div class="flex justify-content-center gap-2">
+                <button 
+                    pButton
+                    class="p-button p-button-outlined" 
+                    label="{{'button.back' | translate}}"
+                    icon="pi pi-arrow-left"
+                    (click)="onBack()"
+                >
+                </button>
                 <button 
                     [disabled]="formRegister.invalid"    
                     pButton 
+                    icon="pi pi-check"
                     label="{{'button.register' | translate}}"
                     (click)="onRegister()"
                 >

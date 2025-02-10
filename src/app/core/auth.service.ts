@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { LoginRequest, LoginResponse, RegisterRequest } from '../shared/models/auth-models';
 import { backendUrl } from './constants/api-url';
 import { UtilService } from '../shared/services/util.service';
+import { CODES_ERROR } from './enums/enums';
 
 @Injectable({
   providedIn: 'root'
@@ -20,14 +21,18 @@ export class AuthService {
     return this.http.post<LoginResponse>(`${backendUrl(this.PATH_ROOT)}/login`, { ...request})
       .pipe(
         catchError((error) => {
-          this.utilService.showMessage("Usuario o Contraseña invalidos", "error");
+          if (error.error === CODES_ERROR.CODE_ERROR_USER_NOT_FOUND_USER) {
+            this.utilService.showMessage("messages.error.ERR003", "error");
+            return of(null);
+          }
+          this.utilService.showMessage("messages.error-unexpected", "error");
           return of(null);
         })
       );
   }
 
-  register(request: RegisterRequest): Observable<LoginResponse | null> {
-    this.logout();
+  register(request: RegisterRequest): Observable<LoginResponse> {
+    // this.logout();
     return this.http.post<LoginResponse>(`${backendUrl(this.PATH_ROOT)}/register`, { ...request});
   }
 
